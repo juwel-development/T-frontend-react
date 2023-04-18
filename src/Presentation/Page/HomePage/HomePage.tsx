@@ -1,16 +1,21 @@
+import { Provider } from 'inversify-react';
 import React from 'react';
+import { AuthenticationContainer } from '../../../Container/AuthenticationContainer';
 import { Heading1 } from '../../Component/Common/Typography/Heading1';
 import { TranslatedMessage } from '../../Component/Common/Typography/TranslatedMessage';
 import { PageLayout } from '../../Component/Component/Layout/PageLayout';
 
+
 export const HomePage = () => {
 
     return (
-        <PageLayout content={
-            <Heading1>
-                <TranslatedMessage id={'HOME_TITLE'}/>
-            </Heading1>
-        }/>
+        <Provider container={AuthenticationContainer}>
+            <PageLayout content={
+                <Heading1>
+                    <TranslatedMessage id={'HOME_TITLE'}/>
+                </Heading1>
+            }/>
+        </Provider>
     );
 };
 

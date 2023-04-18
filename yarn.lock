@@ -2696,6 +2696,16 @@ intl-messageformat@10.3.4:
     "@formatjs/icu-messageformat-parser" "2.3.1"
     tslib "^2.4.0"
 
+inversify-react@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/inversify-react/-/inversify-react-1.1.0.tgz#6c9913a8d52eaa9df6728705960b365273dc269c"
+  integrity sha512-jXHcYhrFdlsdhmCVpedUc2yZT/HVA2OM/reUnIWuQdqkWKlGrNf6J+D1fA5t/vjnRsTU21egCqXFydHiZ2Fy7Q==
+
+inversify@^6.0.1:
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/inversify/-/inversify-6.0.1.tgz#b20d35425d5d8c5cd156120237aad0008d969f02"
+  integrity sha512-B3ex30927698TJENHR++8FfEaJGqoWOgI6ZY5Ht/nLUsFCwHn6akbwtnUAPCgUepAnTpe2qHxhDNjoKLyz6rgQ==
+
 ipaddr.js@1.9.1:
   version "1.9.1"
   resolved "https://registry.yarnpkg.com/ipaddr.js/-/ipaddr.js-1.9.1.tgz#bff38543eeb8984825079ff3a2a8e6cbd46781b3"
@@ -4149,6 +4159,11 @@ redux@^4.0.4, redux@^4.2.1:
   integrity sha512-LAUYz4lc+Do8/g7aeRa8JkyDErK6ekstQaqWQrNRW//MY1TvCEpMtpTWvlQ+FPbWCx+Xixu/6SHt5N0HR+SB4w==
   dependencies:
     "@babel/runtime" "^7.9.2"
+
+reflect-metadata@^0.1.13:
+  version "0.1.13"
+  resolved "https://registry.yarnpkg.com/reflect-metadata/-/reflect-metadata-0.1.13.tgz#67ae3ca57c972a2aa1642b10fe363fe32d49dc08"
+  integrity sha512-Ts1Y/anZELhSsjMcU605fU9RE4Oi3p5ORujwbIKXfWa+0Zxs510Qrmrce5/Jowq3cHSZSJqBjypxmHarc+vEWg==
 
 regenerator-runtime@^0.13.11:
   version "0.13.11"

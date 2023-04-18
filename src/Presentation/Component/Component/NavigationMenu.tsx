@@ -1,6 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { AuthenticationQuery } from '../../../Application/Query/AuthenticationQuery';
+import { useInjection } from 'inversify-react';
+import React, { useEffect, useState } from 'react';
+import type { AuthenticationQuery } from '../../../Application/Query/AuthenticationQuery';
 import { UserViewModel } from '../../../Application/ViewModel/UserViewModel';
+import { TYPES } from '../../../Container/TYPES';
 import { Button } from '../Common/Button';
 import { Navbar } from '../Common/Navbar';
 import { TextDecoration } from '../Common/Typography/TextDecoration';
@@ -8,10 +10,10 @@ import { TranslatedMessage } from '../Common/Typography/TranslatedMessage';
 
 export const NavigationMenu = () => {
     const [loggedInUser, setLoggedInUser] = useState<UserViewModel | undefined>();
-    const getAuthenticatedUser$ = useRef(AuthenticationQuery.getAuthenticatedUser$);
+    const getAuthenticatedUser$ = useInjection<AuthenticationQuery>(TYPES.AuthenticationQuery).getAuthenticatedUser$();
 
     useEffect(() => {
-        const subscription = getAuthenticatedUser$.current().subscribe(setLoggedInUser);
+        const subscription = getAuthenticatedUser$.subscribe(setLoggedInUser);
         return () => subscription.unsubscribe();
     }, []);
 
