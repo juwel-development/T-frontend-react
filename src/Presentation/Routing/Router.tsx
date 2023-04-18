@@ -1,7 +1,7 @@
-import { BrowserRouter, Route } from 'react-router-dom';
-import { RouteDefinition as AllRoutes } from './RouteDefinition';
 import React, { PropsWithChildren } from 'react';
 import { Navigate, Routes } from 'react-router';
+import { BrowserRouter, Route } from 'react-router-dom';
+import { RouteDefinition as AllRoutes } from './RouteDefinition';
 
 export const Router = ({ children }: PropsWithChildren) => {
     return (
@@ -24,6 +24,5 @@ export const Router = ({ children }: PropsWithChildren) => {
             </BrowserRouter>
             {children}
         </>
-
     );
 };
