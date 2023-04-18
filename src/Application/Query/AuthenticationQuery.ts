@@ -1,5 +1,5 @@
 import { inject, injectable } from 'inversify';
-import { BehaviorSubject } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { TYPES } from '../../Container/TYPES';
 import type { GetAuthenticatedUserUseCase } from '../../Domain/UseCase/GetAuthenticatedUserUseCase';
 import { UserViewModel } from '../ViewModel/UserViewModel';
@@ -10,9 +10,14 @@ export class AuthenticationQuery {
     @inject(TYPES.GetAuthenticatedUserUseCase)
     private readonly getAuthenticatedUserUseCase!: GetAuthenticatedUserUseCase;
 
-    public getAuthenticatedUser$(): BehaviorSubject<UserViewModel | undefined> {
-        const user = this.getAuthenticatedUserUseCase.execute();
-
-        return new BehaviorSubject<UserViewModel | undefined>(new UserViewModel(user.Id, 'John Doe'));
+    public getAuthenticatedUser$(): Observable<UserViewModel | undefined> {
+        return this.getAuthenticatedUserUseCase.execute().pipe(
+            map(model => model
+                ? UserViewModel.Factory
+                    .setId(model.Id)
+                    .setFullName(model.FirstName || '', model.LastName || '').Model
+                : undefined
+            )
+        );
     }
 }
