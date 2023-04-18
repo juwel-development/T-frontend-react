@@ -8,7 +8,7 @@ export const Router = ({ children }: PropsWithChildren) => {
         <>
             <BrowserRouter>
                 <Routes>
-                    {AllRoutes.map(({ path, Component, redirectPath }) =>
+                    {AllRoutes.map(({ path, Component }) =>
                         (<Route
                                 path={path}
                                 key={path}

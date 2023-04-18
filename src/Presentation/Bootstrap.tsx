@@ -3,11 +3,19 @@ import { createRoot } from 'react-dom/client';
 import { Router } from './Routing/Router';
 import './Style/main.css';
 
-export namespace Bootstrap {
+const AppComponent: FunctionComponent = () => {
+    return (
+        <StrictMode>
+            <Router/>
+        </StrictMode>
+    );
+};
+
+export const Bootstrap = {
     /**
      * initializes react and render main element
      */
-    export function init(): void {
+    init: (): void => {
         const element = document.createElement('div');
 
         element.id = 'app';
@@ -16,12 +24,4 @@ export namespace Bootstrap {
 
         createRoot(element).render(<AppComponent/>);
     }
-
-    const AppComponent: FunctionComponent = () => {
-        return (
-            <StrictMode>
-                <Router/>
-            </StrictMode>
-        );
-    };
-}
+};

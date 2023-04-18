@@ -1,7 +1,7 @@
 import React, { ReactNode, useEffect, useState } from 'react';
 import { IntlProvider } from 'react-intl';
-import { Translation } from '../../Translation/Translation';
-import type { en_US } from '../../Translation/Resources/en_US';
+import { Translation } from '../../../Translation/Translation';
+import type { en_US } from '../../../Translation/Resources/en_US';
 import { Loader } from '../../Common/Loader';
 import { NavigationMenu } from '../NavigationMenu';
 
