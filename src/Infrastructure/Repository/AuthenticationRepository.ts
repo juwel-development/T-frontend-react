@@ -1,5 +1,5 @@
 import { injectable } from 'inversify';
-import { BehaviorSubject, map, Observable } from 'rxjs';
+import { BehaviorSubject, delay, map, Observable, tap } from 'rxjs';
 import { UserModel } from '../../Domain/Model/UserModel';
 import { UserEntity } from '../Entity/UserEntity';
 
@@ -8,14 +8,17 @@ export class AuthenticationRepository {
     private readonly currentUser$ = new BehaviorSubject<UserEntity | undefined>(undefined);
 
     public getCurrentUser$(): Observable<UserModel | undefined> {
-        return this.currentUser$.pipe(map(
-            user => user
-                ? UserModel.Factory
-                    .setId(user.Id)
-                    .setFirstName(user.FirstName)
-                    .setLastName(user.LastName)
-                    .Model
-                : undefined
-        ));
+        return this.currentUser$.pipe(
+            delay(200),
+            tap(user => console.log('getCurrentUser$ result:', user)),
+            map(
+                user => user
+                    ? UserModel.Factory
+                        .setId(user.Id)
+                        .setFirstName(user.FirstName)
+                        .setLastName(user.LastName)
+                        .Model
+                    : undefined
+            ));
     }
 }

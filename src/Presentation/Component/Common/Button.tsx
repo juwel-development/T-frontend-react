@@ -1,5 +1,6 @@
 import { cva, VariantProps } from 'class-variance-authority';
 import React, { PropsWithChildren } from 'react';
+import { Subject } from 'rxjs';
 
 const button = cva('', {
     variants: {
@@ -10,11 +11,12 @@ const button = cva('', {
 });
 
 interface IProps extends VariantProps<typeof button>, PropsWithChildren {
+    onClick$?: Subject<void>;
 }
 
-export const Button = ({ children, variant }: IProps) => {
+export const Button = ({ children, variant, onClick$ }: IProps) => {
     return (
-        <button className={button({ variant })}>
+        <button className={button({ variant })} onClick={() => onClick$ && onClick$.next()}>
             {children}
         </button>
     );
