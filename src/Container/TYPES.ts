@@ -1,5 +1,9 @@
 export const TYPES = {
+    AuthenticationCommand: Symbol('AuthenticationCommand'),
     AuthenticationQuery: Symbol('AuthenticationQuery'),
-    AuthenticationRepository: Symbol('AuthenticationRepository'),
-    GetAuthenticatedUserUseCase: Symbol('GetAuthenticatedUserUseCase')
+
+    GetAuthenticatedUserUseCase: Symbol('GetAuthenticatedUserUseCase'),
+    SignUpUseCase: Symbol('SignUpUseCase'),
+
+    AuthenticationRepository: Symbol('AuthenticationRepository')
 };

@@ -1,8 +1,8 @@
 import { inject, injectable } from 'inversify';
 import { Observable } from 'rxjs';
-import { TYPES } from '../../Container/TYPES';
-import type { AuthenticationRepository } from '../../Infrastructure/Repository/AuthenticationRepository';
-import { UserModel } from '../Model/UserModel';
+import { TYPES } from '../../../Container/TYPES';
+import type { AuthenticationRepository } from '../../../Infrastructure/Repository/AuthenticationRepository';
+import { UserModel } from '../../Model/UserModel';
 
 @injectable()
 export class GetAuthenticatedUserUseCase {

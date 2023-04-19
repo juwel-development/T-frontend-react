@@ -19,4 +19,14 @@ export class AuthenticationRepository {
                     .Model
             ));
     }
+
+    public setAuthenticatedUser(model: UserModel) {
+        this.currentUser$.next(
+            UserEntity.Factory
+                .setId(model.Id)
+                .setEmail(model.Email)
+                .setPassword(model.Password)
+                .Entity
+        );
+    }
 }

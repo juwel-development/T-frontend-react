@@ -1,7 +1,7 @@
 import { inject, injectable } from 'inversify';
 import { map, Observable } from 'rxjs';
 import { TYPES } from '../../Container/TYPES';
-import type { GetAuthenticatedUserUseCase } from '../../Domain/UseCase/GetAuthenticatedUserUseCase';
+import type { GetAuthenticatedUserUseCase } from '../../Domain/UseCase/Authentication/GetAuthenticatedUserUseCase';
 import { UserViewModel } from '../ViewModel/UserViewModel';
 
 @injectable()

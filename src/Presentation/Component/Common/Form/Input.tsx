@@ -30,7 +30,6 @@ export const Input = ({ label, placeholder = ' ', value$ }: IProps) => {
         value$?.next(event.target.value) || setValue(event.target.value);
     }, []);
 
-
     return (
         <>
             <input id={id} className={input()} value={value} placeholder={placeholder} onChange={handleOnChange}/>

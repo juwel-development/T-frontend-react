@@ -1,7 +1,7 @@
 import { cva, VariantProps } from 'class-variance-authority';
 import React, { PropsWithChildren, ReactNode } from 'react';
 
-const navbar = cva('flex align-center w-screen bg-primary shadow sticky top-0 flex', {
+const navbar = cva('flex align-center w-screen bg-primary shadow-xl sticky top-0 flex', {
     variants: {
         color: {
             primary: 'bg-primary text-primary-contrast',

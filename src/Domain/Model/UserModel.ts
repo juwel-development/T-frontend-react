@@ -1,3 +1,5 @@
+import * as uuid from 'uuid';
+
 class UserModelFactory {
     private _model: UserModel = new UserModel();
 
@@ -19,13 +21,25 @@ class UserModelFactory {
         this._model.LastName = lastName;
         return this;
     }
+
+    public setEmail(email: string): UserModelFactory {
+        this._model.Email = email;
+        return this;
+    }
+
+    public setPassword(password: string): UserModelFactory {
+        this._model.Password = password;
+        return this;
+    }
 }
 
 
 export class UserModel {
-    public Id = '';
+    public Id = uuid.v4();
     public FirstName?: string;
     public LastName?: string;
+    public Email = '';
+    public Password = '';
 
     public static get Factory(): UserModelFactory {
         return new UserModelFactory();
