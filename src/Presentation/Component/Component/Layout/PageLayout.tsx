@@ -29,8 +29,10 @@ export const PageLayout = ({ content }: IProps) => {
     return (
         <IntlProvider locale={translation.CurrentLanguage} messages={messageMap}>
             <NavigationMenu/>
-            <main className="p-2 sm:p-4 md:p-8 bg-body">
-                {content}
+            <main className="p-2 sm:p-4 md:p-8 bg-body text-font-color">
+                <div className="relative">
+                    {content}
+                </div>
             </main>
         </IntlProvider>
     );

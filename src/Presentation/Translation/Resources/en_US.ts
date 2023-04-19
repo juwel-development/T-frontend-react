@@ -3,4 +3,6 @@ export const en_US = {
     AUTH_SIGNUP: 'Sign Up',
     COMMON_BRAND: 'Brand',
     HOME_TITLE: 'Home Title',
+    USER_EMAIL: 'Email',
+    USER_PASSWORD: 'Password',
 };

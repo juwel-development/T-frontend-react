@@ -12,13 +12,11 @@ export class AuthenticationRepository {
             delay(200),
             tap(user => console.log('getCurrentUser$ result:', user)),
             map(
-                user => user
-                    ? UserModel.Factory
-                        .setId(user.Id)
-                        .setFirstName(user.FirstName)
-                        .setLastName(user.LastName)
-                        .Model
-                    : undefined
+                user => user && UserModel.Factory
+                    .setId(user.Id)
+                    .setFirstName(user.FirstName)
+                    .setLastName(user.LastName)
+                    .Model
             ));
     }
 }

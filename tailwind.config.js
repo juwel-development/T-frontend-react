@@ -5,8 +5,12 @@ module.exports = {
         extend: {
             colors: {
                 primary: '#6834c7',
+                'primary-dark': '#4c2a9d',
                 'primary-contrast': '#FFF',
-                body: '#dfdde8',
+                body: '#f1f1f3',
+                'border-color': '#cccbcb',
+                'font-color': '#333232',
+                'font-light': '#919191',
             }
         }
     },

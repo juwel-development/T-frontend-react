@@ -20,5 +20,9 @@ export const RouteDefinition: readonly IRoute[] = [
     {
         path: PATH.SIGN_UP,
         Component: React.lazy(() => import('../Page/Authentication/SignUpPage')),
+    },
+    {
+        path: PATH.ERROR_404,
+        Component: React.lazy(() => import('../Page/Error/Error404Page')),
     }
 ];

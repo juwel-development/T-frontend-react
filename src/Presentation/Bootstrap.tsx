@@ -19,7 +19,7 @@ export const Bootstrap = {
         const element = document.createElement('div');
 
         element.id = 'app';
-        document.body.className = 'font-sans';
+        // document.body.className = 'font-sans';
         document.body.appendChild(element);
 
         createRoot(element).render(<AppComponent/>);

@@ -1,7 +1,7 @@
 import { cva, VariantProps } from 'class-variance-authority';
 import React, { PropsWithChildren } from 'react';
 
-const classes = cva('text-4xl', {
+const classes = cva('text-4xl py-4', {
     variants: {
         color: {
             primary: 'text-primary',

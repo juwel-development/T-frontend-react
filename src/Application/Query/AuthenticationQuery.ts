@@ -12,11 +12,10 @@ export class AuthenticationQuery {
 
     public getAuthenticatedUser$(): Observable<UserViewModel | undefined> {
         return this.getAuthenticatedUserUseCase.execute().pipe(
-            map(model => model
-                ? UserViewModel.Factory
-                    .setId(model.Id)
-                    .setFullName(model.FirstName || '', model.LastName || '').Model
-                : undefined
+            map(model => model && UserViewModel.Factory
+                .setId(model.Id)
+                .setFullName(model.FirstName || '', model.LastName || '')
+                .Model
             )
         );
     }
