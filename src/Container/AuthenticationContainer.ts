@@ -1,7 +1,9 @@
 import { Container } from 'inversify';
-import { AuthenticationCommand } from '../Application/Command/AuthenticationCommand';
+import { AuthenticationCommandHandler } from '../Application/Command/Handler/AuthenticationCommandHandler';
 import { AuthenticationQuery } from '../Application/Query/AuthenticationQuery';
 import { GetAuthenticatedUserUseCase } from '../Domain/UseCase/Authentication/GetAuthenticatedUserUseCase';
+import { LoginUseCase } from '../Domain/UseCase/Authentication/LoginUseCase';
+import { LogoutUseCase } from '../Domain/UseCase/Authentication/LogoutUseCase';
 import { SignUpUseCase } from '../Domain/UseCase/Authentication/SignUpUseCase';
 import { AuthenticationRepository } from '../Infrastructure/Repository/AuthenticationRepository';
 import { TYPES } from './TYPES';
@@ -9,11 +11,13 @@ import { TYPES } from './TYPES';
 export const AuthenticationContainer = new Container();
 
 //Application
-AuthenticationContainer.bind(TYPES.AuthenticationCommand).to(AuthenticationCommand).inTransientScope();
+AuthenticationContainer.bind(TYPES.AuthenticationCommandHandler).to(AuthenticationCommandHandler).inTransientScope();
 AuthenticationContainer.bind(TYPES.AuthenticationQuery).to(AuthenticationQuery).inTransientScope();
 
 //Domain
 AuthenticationContainer.bind(TYPES.GetAuthenticatedUserUseCase).to(GetAuthenticatedUserUseCase).inTransientScope();
+AuthenticationContainer.bind(TYPES.LoginUseCase).to(LoginUseCase).inTransientScope();
+AuthenticationContainer.bind(TYPES.LogoutUseCase).to(LogoutUseCase).inTransientScope();
 AuthenticationContainer.bind(TYPES.SignUpUseCase).to(SignUpUseCase).inTransientScope();
 
 //Infrastructure

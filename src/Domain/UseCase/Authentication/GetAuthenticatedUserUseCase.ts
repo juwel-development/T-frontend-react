@@ -1,13 +1,14 @@
 import { inject, injectable } from 'inversify';
 import { Observable } from 'rxjs';
 import { TYPES } from '../../../Container/TYPES';
-import type { AuthenticationRepository } from '../../../Infrastructure/Repository/AuthenticationRepository';
 import { UserModel } from '../../Model/UserModel';
+import { IAuthenticationRepository } from '../../Repository/IAuthenticationRepository';
+import { IQueryUseCase } from '../IQueryUseCase';
 
 @injectable()
-export class GetAuthenticatedUserUseCase {
+export class GetAuthenticatedUserUseCase implements IQueryUseCase<void, UserModel | undefined> {
     constructor(
-        @inject(TYPES.AuthenticationRepository) private readonly authenticationRepository: AuthenticationRepository
+        @inject(TYPES.AuthenticationRepository) private readonly authenticationRepository: IAuthenticationRepository
     ) {
     }
 

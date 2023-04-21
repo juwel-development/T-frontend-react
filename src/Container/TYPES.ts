@@ -1,9 +1,15 @@
 export const TYPES = {
-    AuthenticationCommand: Symbol('AuthenticationCommand'),
+    //Application
+    AuthenticationCommandHandler: Symbol('AuthenticationCommand'),
     AuthenticationQuery: Symbol('AuthenticationQuery'),
 
+    //Domain
     GetAuthenticatedUserUseCase: Symbol('GetAuthenticatedUserUseCase'),
+    LogoutUseCase: Symbol('LogoutUseCase'),
+    LoginUseCase: Symbol('LoginUseCase'),
     SignUpUseCase: Symbol('SignUpUseCase'),
 
-    AuthenticationRepository: Symbol('AuthenticationRepository')
+    //Infrastructure
+    AuthenticationRepository: Symbol('AuthenticationRepository'),
+    UserRepository: Symbol('UserRepository')
 };

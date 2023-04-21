@@ -1,33 +1,34 @@
 import { Provider, useInjection } from 'inversify-react';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Navigate } from 'react-router';
-import { AuthenticationCommand } from '../../../Application/Command/AuthenticationCommand';
+import { SignUpCommand } from '../../../Application/Command/Authentication/SignUpCommand';
+import { AuthenticationCommandHandler } from '../../../Application/Command/Handler/AuthenticationCommandHandler';
 import { AuthenticationQuery } from '../../../Application/Query/AuthenticationQuery';
 import { UserViewModel } from '../../../Application/ViewModel/UserViewModel';
-import { AuthenticationContainer } from '../../../Container/AuthenticationContainer';
 import { TYPES } from '../../../Container/TYPES';
+import { UserContainer } from '../../../Container/UserContainer';
+import { useAction } from '../../../Framework/Presentation/Hook/useAction';
+import { useIsValid } from '../../../Framework/Presentation/Hook/useIsValid';
 import { Button } from '../../Component/Common/Button';
 import { FormControl } from '../../Component/Common/Form/FormControl';
 import { Input } from '../../Component/Common/Form/Input';
 import { Heading1 } from '../../Component/Common/Typography/Heading1';
 import { TranslatedMessage } from '../../Component/Common/Typography/TranslatedMessage';
 import { PageLayout } from '../../Component/Component/Layout/PageLayout';
-import { useInteraction } from '../../Hooks/useInteraction';
-import { useValueStream } from '../../Hooks/useValueStream';
 import { PATH } from '../../Routing/Path';
 
 const Content = () => {
-    const authenticationCommand = useInjection<AuthenticationCommand>(TYPES.AuthenticationCommand);
+    const authenticationCommandHandler = useInjection<AuthenticationCommandHandler>(TYPES.AuthenticationCommandHandler);
 
     const [loggedInUser, setLoggedInUser] = useState<UserViewModel | undefined>();
     const getAuthenticatedUser$ = useInjection<AuthenticationQuery>(TYPES.AuthenticationQuery).getAuthenticatedUser$();
 
-    const email$ = useValueStream('');
-    const password$ = useValueStream('');
+    const command = useRef<SignUpCommand>(new SignUpCommand()).current;
+    const isValid = useIsValid([command.Email.IsValid$, command.Password.IsValid$]);
 
-    const onSubmit$ = useInteraction<void>(() => {
-        authenticationCommand.signUp(email$.value, password$.value);
-    }, undefined);
+    const onSubmit$ = useAction(() => {
+        isValid && authenticationCommandHandler.signUp(command);
+    }, [isValid, authenticationCommandHandler, command]);
 
     useEffect(() => {
         const subscription = getAuthenticatedUser$.subscribe(setLoggedInUser);
@@ -35,22 +36,20 @@ const Content = () => {
     }, []);
 
     if (loggedInUser) {
-        return (
-            <Navigate to={PATH.HOME}/>
-        );
+        return <Navigate to={PATH.HOME}/>;
     }
 
     return (
         <>
             <Heading1><TranslatedMessage id="AUTH_SIGNUP"/></Heading1>
             <FormControl>
-                <Input label={<TranslatedMessage id="USER_EMAIL"/>} value$={email$}/>
+                <Input label={<TranslatedMessage id="USER_EMAIL"/>} value$={command.Email.Value$}/>
             </FormControl>
             <FormControl>
-                <Input label={<TranslatedMessage id={'USER_PASSWORD'}/>} value$={password$}/>
+                <Input label={<TranslatedMessage id={'USER_PASSWORD'}/>} value$={command.Password.Value$}/>
             </FormControl>
             <FormControl>
-                <Button variant="primary" onClick$={onSubmit$}><TranslatedMessage id={'AUTH_SIGNUP'}/></Button>
+                <Button variant="primary" onClick$={onSubmit$} disabled={!isValid}><TranslatedMessage id={'AUTH_SIGNUP'}/></Button>
             </FormControl>
         </>
     );
@@ -60,7 +59,7 @@ const Content = () => {
 export const SignUpPage = () => {
 
     return (
-        <Provider container={AuthenticationContainer}>
+        <Provider container={UserContainer}>
             <PageLayout content={
                 <Content/>
             }/>

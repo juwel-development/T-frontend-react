@@ -10,11 +10,10 @@ const input = cva('border-b border-border-color border-b-2 rounded py-2 px-4 w-f
 
 interface IProps extends VariantProps<typeof input>, PropsWithChildren {
     value$?: Subject<string>;
-    placeholder?: string;
     label?: ReactNode;
 }
 
-export const Input = ({ label, placeholder = ' ', value$ }: IProps) => {
+export const Input = ({ label, value$ }: IProps) => {
     const [value, setValue] = useState<string>('');
     const id = useRef(uniqueId('input')).current;
 
@@ -32,7 +31,7 @@ export const Input = ({ label, placeholder = ' ', value$ }: IProps) => {
 
     return (
         <>
-            <input id={id} className={input()} value={value} placeholder={placeholder} onChange={handleOnChange}/>
+            <input id={id} className={input()} value={value} placeholder=" " onChange={handleOnChange}/>
             {label && <Label htmlFor={id}>{label}</Label>}
         </>
     );
