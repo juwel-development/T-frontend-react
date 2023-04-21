@@ -11,6 +11,7 @@ module.exports = {
                 'border-color': '#cccbcb',
                 'font-color': '#333232',
                 'font-light': '#919191',
+                'error': '#ff0059',
             }
         }
     },

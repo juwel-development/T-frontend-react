@@ -43,10 +43,19 @@ const Content = () => {
         <>
             <Heading1><TranslatedMessage id={'AUTH_LOGIN'}/></Heading1>
             <FormControl>
-                <Input value$={command.Email.Value$} label={<TranslatedMessage id={'USER_EMAIL'}/>}/>
+                <Input
+                    value$={command.Email.Value$}
+                    isValid$={command.Email.IsValid$}
+                    label={<TranslatedMessage id={'USER_EMAIL'}/>}
+                />
             </FormControl>
             <FormControl>
-                <Input value$={command.Password.Value$} label={<TranslatedMessage id={'USER_PASSWORD'}/>}/>
+                <Input
+                    value$={command.Password.Value$}
+                    isValid$={command.Password.IsValid$}
+                    type="password"
+                    label={<TranslatedMessage id={'USER_PASSWORD'}/>}
+                />
             </FormControl>
             <FormControl>
                 <Button variant="primary" onClick$={onSubmit$} disabled={!isValid}><TranslatedMessage id={'AUTH_LOGIN'}/></Button>
