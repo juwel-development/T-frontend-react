@@ -8,6 +8,7 @@ module.exports = {
                 'primary-dark': '#4c2a9d',
                 'primary-contrast': '#FFF',
                 body: '#f1f1f3',
+                'body-dark': '#e1e1e3',
                 'border-color': '#cccbcb',
                 'font-color': '#333232',
                 'font-light': '#919191',

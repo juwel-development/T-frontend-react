@@ -8,9 +8,11 @@ import { TYPES } from '../../../Container/TYPES';
 import { useAction } from '../../../Framework/Presentation/Hook/useAction';
 import { PATH } from '../../Routing/Path';
 import { Button } from '../Common/Button';
+import { UserIcon } from '../Common/Icon/UserIcon';
 import { Navbar } from '../Common/Navbar';
 import { TextDecoration } from '../Common/Typography/TextDecoration';
 import { TranslatedMessage } from '../Common/Typography/TranslatedMessage';
+import { Menu } from '../Common/Menu';
 
 export const NavigationMenu = () => {
     const [loggedInUser, setLoggedInUser] = useState<UserViewModel | undefined>();
@@ -33,8 +35,13 @@ export const NavigationMenu = () => {
             end={(
                 loggedInUser
                     ? <>
-                        <TextDecoration decoration="uppercase">{loggedInUser.FullName}</TextDecoration>
-                        <Button variant="ghost" onClick$={logout$}><TranslatedMessage id="AUTH_LOGOUT"/></Button>
+                        <Menu title={
+                            <>
+                                <UserIcon/><TextDecoration decoration="uppercase">{loggedInUser.FullName}</TextDecoration>
+                            </>
+                        }>
+                            <Menu.Item onClick$={logout$}><TranslatedMessage id={'AUTH_LOGOUT'}/></Menu.Item>
+                        </Menu>
                     </>
                     : (
                         <>

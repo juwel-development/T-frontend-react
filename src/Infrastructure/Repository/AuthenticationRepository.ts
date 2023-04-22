@@ -6,7 +6,7 @@ import { UserEntity } from '../Entity/UserEntity';
 
 @injectable()
 export class AuthenticationRepository implements IAuthenticationRepository {
-    private readonly currentUser$ = new BehaviorSubject<UserEntity | undefined>(undefined);
+    private readonly currentUser$ = new BehaviorSubject<UserEntity | undefined>(new UserEntity());
 
     public getCurrentUser$(): Observable<UserModel | undefined> {
         return this.currentUser$.pipe(
