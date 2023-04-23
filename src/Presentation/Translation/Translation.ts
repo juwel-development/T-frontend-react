@@ -6,10 +6,6 @@ type TSupportedLanguage = 'en-US' | 'de-DE';
 export class Translation {
     public static readonly Instance = new Translation();
 
-    private Translation() {
-        // Private constructor to prevent instantiation
-    }
-
     public get CurrentLanguage(): TSupportedLanguage {
         return 'en-US';
     }

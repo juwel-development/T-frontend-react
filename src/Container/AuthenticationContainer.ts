@@ -1,4 +1,5 @@
 import { Container } from 'inversify';
+import { ApplicationCommandHandler } from '../Application/Command/Handler/ApplicationCommandHandler';
 import { AuthenticationCommandHandler } from '../Application/Command/Handler/AuthenticationCommandHandler';
 import { AuthenticationQuery } from '../Application/Query/AuthenticationQuery';
 import { GetAuthenticatedUserUseCase } from '../Domain/UseCase/Authentication/GetAuthenticatedUserUseCase';
@@ -13,6 +14,7 @@ export const AuthenticationContainer = new Container();
 //Application
 AuthenticationContainer.bind(TYPES.AuthenticationCommandHandler).to(AuthenticationCommandHandler).inTransientScope();
 AuthenticationContainer.bind(TYPES.AuthenticationQuery).to(AuthenticationQuery).inTransientScope();
+AuthenticationContainer.bind(TYPES.ApplicationCommandHandler).to(ApplicationCommandHandler).inSingletonScope();
 
 //Domain
 AuthenticationContainer.bind(TYPES.GetAuthenticatedUserUseCase).to(GetAuthenticatedUserUseCase).inTransientScope();

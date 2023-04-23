@@ -1,5 +1,5 @@
 import { cva, VariantProps } from 'class-variance-authority';
-import { uniqueId } from 'lodash';
+import uniqueId from 'lodash/uniqueId';
 import React, { ChangeEvent, PropsWithChildren, ReactNode, useCallback, useEffect, useRef, useState } from 'react';
 import { Observable, Subject } from 'rxjs';
 import { Label } from './Label';

@@ -13,6 +13,8 @@ module.exports = {
                 'font-color': '#333232',
                 'font-light': '#919191',
                 'error': '#ff0059',
+                'error-contrast': '#FFF',
+                'error-light': '#ff5f7f',
             }
         }
     },
