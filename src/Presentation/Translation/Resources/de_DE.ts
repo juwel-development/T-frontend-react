@@ -10,6 +10,7 @@ export const de_DE: typeof en_US = {
     ERROR_LOGIN_TITLE: 'Login fehl geschlagen',
     ERROR_LOGIN_MESSAGE: 'Wir konnten keine Eintrag mit deiner Email-Adresse und Passwort in unserer Datenbank finden. Bitte versuche es erneut.',
     HOME_TITLE: 'Titel der Startseite',
+    ORGANIZATION_OVERVIEW_TITLE: 'Organisationen',
     USER_EMAIL: 'E-Mail',
     USER_PASSWORD: 'Passwort',
 };

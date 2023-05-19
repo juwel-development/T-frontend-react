@@ -36,7 +36,7 @@ const Content = () => {
     }, []);
 
     if (loggedInUser) {
-        return <Navigate to={PATH.HOME}/>;
+        return <Navigate to={PATH.ORGANIZATION_OVERVIEW}/>;
     }
 
     return (

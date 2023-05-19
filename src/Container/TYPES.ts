@@ -2,7 +2,9 @@ export const TYPES = {
     //Application
     AuthenticationCommandHandler: Symbol('AuthenticationCommandHandler'),
     ApplicationCommandHandler: Symbol('ApplicationCommandHandler'),
+
     AuthenticationQuery: Symbol('AuthenticationQuery'),
+    ApplicationQuery: Symbol('ApplicationQuery'),
 
     //Domain
     GetAuthenticatedUserUseCase: Symbol('GetAuthenticatedUserUseCase'),

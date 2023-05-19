@@ -8,6 +8,7 @@ export const en_US = {
     ERROR_LOGIN_TITLE: 'Login failed',
     ERROR_LOGIN_MESSAGE: 'We were not able to find a record with your password and email address. Please try again.',
     HOME_TITLE: 'Home Title',
+    ORGANIZATION_OVERVIEW_TITLE: 'Organizations',
     USER_EMAIL: 'Email',
     USER_PASSWORD: 'Password',
 };

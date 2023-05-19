@@ -1,7 +1,7 @@
 import { useInjection } from 'inversify-react';
 import React, { ReactNode, useEffect, useState } from 'react';
 import { IntlProvider } from 'react-intl';
-import { ApplicationCommandHandler } from '../../../../Application/Command/Handler/ApplicationCommandHandler';
+import { ApplicationQuery } from '../../../../Application/Query/ApplicationQuery';
 import { TYPES } from '../../../../Container/TYPES';
 import type { en_US } from '../../../Translation/Resources/en_US';
 import { Translation } from '../../../Translation/Translation';
@@ -17,7 +17,7 @@ export const PageLayout = ({ content }: IProps) => {
     const translation = Translation.Instance;
     const [messageMap, setMessageMap] = useState<undefined | typeof en_US>();
 
-    const messages$ = useInjection<ApplicationCommandHandler>(TYPES.ApplicationCommandHandler).Message$;
+    const messages$ = useInjection<ApplicationQuery>(TYPES.ApplicationQuery).Message$;
 
     useEffect(() => {
         const subscription = translation.getMessages$().subscribe(setMessageMap);
