@@ -5,10 +5,11 @@ This is a starter template for react projects to bootstrap a frontend applicatio
 ## Motivation
 
 I worked in several frontend projects and I had the feeling that over the last years the complexity and number of dependencies increased.
-The goal of this approach is to go back to the basics and check what is really needed to be productive in the frontend. I am now using this
-architecture and techstack in other frontend projects and will update this project whenever there is a new learning.
+The goal of this approach is to go back to the basics and check what is really needed to be productive when building a frontend web
+application. I am now using this architecture and techstack in other frontend projects and will update this project whenever there is a new
+learning.
 
-### What is really needed for a frontends?
+### What is really needed for a frontend?
 
 I was thinking about what libraries were really boosting my productivity in the frontend. In my opinion there must be some library to build
 reusable components. In this example I was using `React`, but Vue, Angular or even Webcomponents work. For styling components I am
