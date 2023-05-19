@@ -1,6 +1,28 @@
 # react-bootstrap
 
-This is a starter template for react projects to bootrap a frontend application quickly.
+This is a starter template for react projects to bootstrap a frontend application quickly.
+
+## Motivation
+
+I worked in several frontend projects and I had the feeling that over the last years the complexity and number of dependencies increased.
+The goal of this approach is to go back to the basics and check what is really needed to be productive in the frontend. I am now using this
+architecture and techstack in other frontend projects and will update this project whenever there is a new learning.
+
+### What is really needed for a frontends?
+
+I was thinking about what libraries were really boosting my productivity in the frontend. In my opinion there must be some library to build
+reusable components. In this example I was using `React`, but Vue, Angular or even Webcomponents work. For styling components I am
+picking `TailwindCss` and `class-variance-authority`, to create themeable components quickly. There also must be a way to implement
+dependency injection, this resulted in the use of `InversifyJS`. And to react on resource changes, I am using `RxJS`. RxJS in combination
+with React is very strong as it gives you the possibility to keep state local and to reduce the amount of components to render, when there
+are updates.
+
+### Why not Redux?
+
+Redux is great to implement the Flux architecture. But every React/Redux project I have seen before, was not
+implementing `Seperation of concerns`, so that the business logic was mixed with the UI. This resulted in a strong dependency to the React
+and Redux ecosystem. This project minimizes the logic inside the components - so it makes it easier to change it later, without changing
+other layers of the application.
 
 ## Getting Started
 
@@ -67,4 +89,3 @@ use. You can use REST, GraphQL or even WebSockets, without changing the business
     - The infrastructure layer communicates with the backend or other services. It is decoupled from the business logic. It
       subscribes to the backend and sends commands to the backend. Repositories are also a caching layer, so that the UI is only updated
       when some resources changed.
-
