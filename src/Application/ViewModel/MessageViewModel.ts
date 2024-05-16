@@ -1,4 +1,4 @@
-import { en_US } from '../../Presentation/Translation/Resources/en_US';
+import { en_US } from 'Presentation/Translation/Resources/en_US';
 
 export enum MessageType {
     Error = 'Error',

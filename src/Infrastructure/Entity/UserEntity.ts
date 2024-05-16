@@ -7,27 +7,27 @@ class UserEntityFactory {
         return this._entity;
     }
 
-    public setId(id: string): UserEntityFactory {
+    public setId(id: string): this {
         this._entity.Id = id;
         return this;
     }
 
-    public setFirstName(firstName?: string): UserEntityFactory {
+    public setFirstName(firstName?: string): this {
         this._entity.FirstName = firstName;
         return this;
     }
 
-    public setLastName(lastName?: string): UserEntityFactory {
+    public setLastName(lastName?: string): this {
         this._entity.LastName = lastName;
         return this;
     }
 
-    public setEmail(email: string): UserEntityFactory {
+    public setEmail(email: string): this {
         this._entity.Email = email;
         return this;
     }
 
-    public setPassword(password: string): UserEntityFactory {
+    public setPassword(password: string): this {
         this._entity.Password = password;
         return this;
     }

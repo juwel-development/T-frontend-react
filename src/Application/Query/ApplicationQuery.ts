@@ -1,7 +1,7 @@
 import { inject, injectable } from 'inversify';
 import { map, Observable } from 'rxjs';
-import { TYPES } from '../../Container/TYPES';
-import { LoginFailedError } from '../../Domain/Model/Error/LoginFailedError';
+import { TYPES } from 'Container/TYPES';
+import { LoginFailedError } from 'Domain/Model/Error/LoginFailedError';
 import { ApplicationCommandHandler } from '../Command/Handler/ApplicationCommandHandler';
 import { MessageType, MessageViewModel } from '../ViewModel/MessageViewModel';
 

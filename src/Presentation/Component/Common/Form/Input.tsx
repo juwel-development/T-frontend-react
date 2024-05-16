@@ -43,7 +43,8 @@ export const Input = ({ label, type = 'text', isValid$, value$ }: IProps) => {
     });
 
     const handleOnChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
-        value$?.next(event.target.value) || setValue(event.target.value);
+        value$?.next(event.target.value);
+        setValue(event.target.value);
     }, []);
 
     const handleOnBlur = useCallback(() => {

@@ -1,5 +1,5 @@
 import { inject, injectable } from 'inversify';
-import { TYPES } from '../../../Container/TYPES';
+import { TYPES } from 'Container/TYPES';
 import { IAuthenticationRepository } from '../../Repository/IAuthenticationRepository';
 import { ICommandUseCase } from '../ICommandUseCase';
 

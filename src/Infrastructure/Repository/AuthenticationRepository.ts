@@ -1,7 +1,7 @@
 import { injectable } from 'inversify';
 import { BehaviorSubject, delay, map, Observable, tap } from 'rxjs';
-import { UserModel } from '../../Domain/Model/UserModel';
-import { IAuthenticationRepository } from '../../Domain/Repository/IAuthenticationRepository';
+import { UserModel } from 'Domain/Model/UserModel';
+import { IAuthenticationRepository } from 'Domain/Repository/IAuthenticationRepository';
 import { UserEntity } from '../Entity/UserEntity';
 
 @injectable()

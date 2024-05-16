@@ -1,6 +1,6 @@
 import { inject, injectable } from 'inversify';
 import { Subject } from 'rxjs';
-import { TYPES } from '../../../Container/TYPES';
+import { TYPES } from 'Container/TYPES';
 import { LoginFailedError } from '../../Model/Error/LoginFailedError';
 import { LoginEvent } from '../../Model/Event/LoginEvent';
 import { ErrorResult } from '../../Model/Result/ErrorResult';

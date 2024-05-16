@@ -1,5 +1,5 @@
 import { inject, injectable } from 'inversify';
-import { TYPES } from '../../../Container/TYPES';
+import { TYPES } from 'Container/TYPES';
 import { SignUpEvent } from '../../Model/Event/SignUpEvent';
 import { UserModel } from '../../Model/UserModel';
 import { IAuthenticationRepository } from '../../Repository/IAuthenticationRepository';

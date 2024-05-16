@@ -1,11 +1,11 @@
 import { useAction } from '@juwel-development/react-observable-tools';
+import { AuthenticationCommandHandler } from 'Application/Command/Handler/AuthenticationCommandHandler';
+import type { AuthenticationQuery } from 'Application/Query/AuthenticationQuery';
+import { UserViewModel } from 'Application/ViewModel/UserViewModel';
+import { TYPES } from 'Container/TYPES';
 import { useInjection } from 'inversify-react';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
-import { AuthenticationCommandHandler } from '../../../Application/Command/Handler/AuthenticationCommandHandler';
-import type { AuthenticationQuery } from '../../../Application/Query/AuthenticationQuery';
-import { UserViewModel } from '../../../Application/ViewModel/UserViewModel';
-import { TYPES } from '../../../Container/TYPES';
 import { PATH } from '../../Routing/Path';
 import { Button } from '../Common/Button';
 import { UserIcon } from '../Common/Icon/UserIcon';

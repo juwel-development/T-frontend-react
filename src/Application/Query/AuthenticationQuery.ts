@@ -1,8 +1,8 @@
 import { inject, injectable } from 'inversify';
 import { map, Observable } from 'rxjs';
-import { TYPES } from '../../Container/TYPES';
-import { UserModel } from '../../Domain/Model/UserModel';
-import { IQueryUseCase } from '../../Domain/UseCase/IQueryUseCase';
+import { TYPES } from 'Container/TYPES';
+import { UserModel } from 'Domain/Model/UserModel';
+import { IQueryUseCase } from 'Domain/UseCase/IQueryUseCase';
 import { UserViewModel } from '../ViewModel/UserViewModel';
 
 @injectable()

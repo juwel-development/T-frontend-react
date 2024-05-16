@@ -1,8 +1,8 @@
 import { useInjection } from 'inversify-react';
 import React, { ReactNode, useEffect, useState } from 'react';
 import { IntlProvider } from 'react-intl';
-import { ApplicationQuery } from '../../../../Application/Query/ApplicationQuery';
-import { TYPES } from '../../../../Container/TYPES';
+import { ApplicationQuery } from 'Application/Query/ApplicationQuery';
+import { TYPES } from 'Container/TYPES';
 import type { en_US } from '../../../Translation/Resources/en_US';
 import { Translation } from '../../../Translation/Translation';
 import { Loader } from '../../Common/Loader';

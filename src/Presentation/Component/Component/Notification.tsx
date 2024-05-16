@@ -1,7 +1,7 @@
+import { MessageType, MessageViewModel } from 'Application/ViewModel/MessageViewModel';
 import { cva } from 'class-variance-authority';
 import React, { useEffect, useRef, useState } from 'react';
 import { BehaviorSubject, delay, Observable, Subject, throttleTime } from 'rxjs';
-import { MessageType, MessageViewModel } from '../../../Application/ViewModel/MessageViewModel';
 import { Heading2 } from '../Common/Typography/Heading2';
 import { Paragraph } from '../Common/Typography/Paragraph';
 import { TranslatedMessage } from '../Common/Typography/TranslatedMessage';
