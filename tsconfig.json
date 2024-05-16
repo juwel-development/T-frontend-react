@@ -16,6 +16,7 @@
     "module": "esnext",
     "moduleResolution": "node",
     "jsx": "react",
+    "baseUrl": "./src",
     "sourceMap": true
   },
   "globals": {
