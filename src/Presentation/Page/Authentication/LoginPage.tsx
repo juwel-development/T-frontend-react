@@ -1,3 +1,4 @@
+import { useAction } from '@juwel-development/react-observable-tools';
 import { Provider, useInjection } from 'inversify-react';
 import React, { useEffect, useRef, useState } from 'react';
 import { Navigate } from 'react-router';
@@ -7,7 +8,6 @@ import { AuthenticationQuery } from '../../../Application/Query/AuthenticationQu
 import { UserViewModel } from '../../../Application/ViewModel/UserViewModel';
 import { TYPES } from '../../../Container/TYPES';
 import { UserContainer } from '../../../Container/UserContainer';
-import { useAction } from '../../../Framework/Presentation/Hook/useAction';
 import { useIsValid } from '../../../Framework/Presentation/Hook/useIsValid';
 import { Button } from '../../Component/Common/Button';
 import { FormControl } from '../../Component/Common/Form/FormControl';

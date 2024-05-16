@@ -1,3 +1,4 @@
+import { useAction } from '@juwel-development/react-observable-tools';
 import { useInjection } from 'inversify-react';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
@@ -5,14 +6,13 @@ import { AuthenticationCommandHandler } from '../../../Application/Command/Handl
 import type { AuthenticationQuery } from '../../../Application/Query/AuthenticationQuery';
 import { UserViewModel } from '../../../Application/ViewModel/UserViewModel';
 import { TYPES } from '../../../Container/TYPES';
-import { useAction } from '../../../Framework/Presentation/Hook/useAction';
 import { PATH } from '../../Routing/Path';
 import { Button } from '../Common/Button';
 import { UserIcon } from '../Common/Icon/UserIcon';
+import { Menu } from '../Common/Menu';
 import { Navbar } from '../Common/Navbar';
 import { TextDecoration } from '../Common/Typography/TextDecoration';
 import { TranslatedMessage } from '../Common/Typography/TranslatedMessage';
-import { Menu } from '../Common/Menu';
 
 export const NavigationMenu = () => {
     const [loggedInUser, setLoggedInUser] = useState<UserViewModel | undefined>();
@@ -34,15 +34,13 @@ export const NavigationMenu = () => {
         <Navbar
             end={(
                 loggedInUser
-                    ? <>
-                        <Menu title={
-                            <>
-                                <UserIcon/><TextDecoration decoration="uppercase">{loggedInUser.FullName}</TextDecoration>
-                            </>
-                        }>
-                            <Menu.Item onClick$={logout$}><TranslatedMessage id={'AUTH_LOGOUT'}/></Menu.Item>
-                        </Menu>
-                    </>
+                    ? <Menu title={
+                        <>
+                            <UserIcon/><TextDecoration decoration="uppercase">{loggedInUser.FullName}</TextDecoration>
+                        </>
+                    }>
+                        <Menu.Item onClick$={logout$}><TranslatedMessage id={'AUTH_LOGOUT'}/></Menu.Item>
+                    </Menu>
                     : (
                         <>
                             <Button variant="ghost" onClick$={navigateToSignup$}><TranslatedMessage id={'AUTH_SIGNUP'}/></Button>
