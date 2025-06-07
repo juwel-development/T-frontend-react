@@ -18,8 +18,8 @@ type Story = StoryObj<typeof PageLayout>;
 export const Default: Story = {
   args: {
     heading: 'Page Title',
-    content: <P className="mt-4">This is the main content of the page.</P>,
-    navbar: <Navbar.Root />,
+    content: <P>This is the main content of the page.</P>,
+    navbar: <Navbar.Root right={<Navbar.Button>Profile</Navbar.Button>} />,
   },
 };
 

@@ -45,21 +45,35 @@ describe('Architecture ', () => {
           .inFolder(restriction.folder)
           .shouldNot()
           .dependOnFiles()
-          .inFolder(restriction.shouldNotDependOn);
+          .inFolder(restriction.shouldNotDependOn)
+          .matchingPattern('^((?!Module).)*$');
 
-        const violations = await rule.check();
-        const errorMessage = violations
+        const violations = (await rule.check())
           .map((violation) => {
             const v = violation as {
               dependency: { sourceLabel: string; targetLabel: string };
             };
+            return {
+              dependency: {
+                sourceLabel: v.dependency.sourceLabel,
+                targetLabel: v.dependency.targetLabel,
+              },
+            };
+          })
+          .filter(
+            (violation) =>
+              !violation.dependency.sourceLabel.endsWith('Module.ts'), // exception is the module configuration, where the modules are registered
+          );
+
+        const errorMessage = violations
+          .map((v) => {
             return `${v.dependency.sourceLabel} -> ${v.dependency.targetLabel}`;
           })
           .join('\n');
 
         if (violations.length > 0) {
           throw new Error(
-            `Architecture violation, ${restriction.folder} should not depend on ${restriction.shouldNotDependOn}:\n${errorMessage}`,
+            `Architecture violation: ${restriction.folder} should not depend on ${restriction.shouldNotDependOn}:\n${errorMessage}`,
           );
         }
       });

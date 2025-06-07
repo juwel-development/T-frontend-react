@@ -1,11 +1,12 @@
-import { GlobalEvent$ } from '@juwel-development/react-observable-tools';
 import { type FunctionComponent, StrictMode, Suspense } from 'react';
 import { createRoot } from 'react-dom/client';
 
 import '@fontsource/roboto';
 import './tailwind.css';
 import { RouterProvider } from '@tanstack/react-router';
+import { ApplicationEventDispatcher } from 'Application/Core/ApplicationEventDispatcher';
 import { router } from 'Presentation/Routing/Router';
+import { container } from 'tsyringe';
 
 const AppComponent: FunctionComponent = () => {
   return (
@@ -29,8 +30,7 @@ export const Bootstrap = {
 
     createRoot(element).render(<AppComponent />);
 
-    GlobalEvent$.next({
-      type: 'application:ready',
-    });
+    const eventDispatcher = container.resolve(ApplicationEventDispatcher);
+    eventDispatcher.applicationReady();
   },
 };
