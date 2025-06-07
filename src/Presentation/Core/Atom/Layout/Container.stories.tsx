@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { H1 } from 'Presentation/Core/Atom/Typography/H1';
+import { P } from 'Presentation/Core/Atom/Typography/P';
 import { Container } from './Container';
 
 const meta: Meta<typeof Container> = {
@@ -29,13 +30,10 @@ export const WithMultipleChildren: Story = {
     children: (
       <>
         <H1>Container Example</H1>
-        <p className="mb-4">
+        <P>
           This container provides consistent horizontal padding and a maximum
           width. It centers content with mx-auto and applies responsive padding.
-        </p>
-        <div className="bg-gray-100 p-4 rounded">
-          <code>max-w-4xl py-3 px-2 md:py-4</code>
-        </div>
+        </P>
       </>
     ),
   },

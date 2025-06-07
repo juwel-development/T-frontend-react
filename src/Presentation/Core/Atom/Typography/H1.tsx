@@ -1,7 +1,7 @@
 import { type VariantProps, cva } from 'class-variance-authority';
 import type { FunctionComponent, PropsWithChildren } from 'react';
 
-const classes = cva('font-bold', {
+const classes = cva('font-bold py-2', {
   variants: {
     size: {
       sm: 'text-2xl',
