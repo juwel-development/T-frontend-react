@@ -47,11 +47,13 @@ const config: StorybookConfig = {
     options: {},
   },
   webpackFinal: async (config) => {
-    config.resolve.modules = [
-      ...(config.resolve.modules || []),
-      path.resolve(__dirname, '../src'),
-      'node_modules',
-    ];
+    if (config.resolve) {
+      config.resolve.modules = [
+        ...(config.resolve.modules || []),
+        path.resolve(__dirname, '../src'),
+        'node_modules',
+      ];
+    }
 
     return config;
   },
