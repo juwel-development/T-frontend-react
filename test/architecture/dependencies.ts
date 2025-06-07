@@ -1,0 +1,68 @@
+import { describe, it } from 'node:test';
+import { filesOfProject } from 'tsarch';
+
+describe('Architecture ', () => {
+  describe('Cycles', () => {
+    it('should be cycle free', async () => {
+      const rule = filesOfProject()
+        .matchingPattern('.*')
+        .should()
+        .beFreeOfCycles();
+
+      const violations = await rule.check();
+      const errorMessage = violations
+        .map((violation) => {
+          const v = violation as {
+            cycle: { sourceLabel: string; targetLabel: string }[];
+          };
+          return `${v.cycle.map((c) => `${c.sourceLabel} -> ${c.targetLabel}`).join(', ')}`;
+        })
+        .join('\n');
+
+      if (violations.length > 0) {
+        throw new Error(
+          `Architecture violation, Cycle found:\n${errorMessage}`,
+        );
+      }
+    });
+  });
+
+  describe('Dependencies', () => {
+    const restrictions = [
+      { folder: 'Application', shouldNotDependOn: 'Presentation' },
+      { folder: 'Domain', shouldNotDependOn: 'Application' },
+      { folder: 'Domain', shouldNotDependOn: 'Infrastructure' },
+      { folder: 'Domain', shouldNotDependOn: 'Presentation' },
+      { folder: 'Infrastructure', shouldNotDependOn: 'Application' },
+      { folder: 'Infrastructure', shouldNotDependOn: 'Presentation' },
+      { folder: 'Presentation', shouldNotDependOn: 'Domain' },
+      { folder: 'Presentation', shouldNotDependOn: 'Infrastructure' },
+    ];
+
+    for (const restriction of restrictions) {
+      it(`${restriction.folder} should not depend on ${restriction.shouldNotDependOn}`, async () => {
+        const rule = filesOfProject()
+          .inFolder(restriction.folder)
+          .shouldNot()
+          .dependOnFiles()
+          .inFolder(restriction.shouldNotDependOn);
+
+        const violations = await rule.check();
+        const errorMessage = violations
+          .map((violation) => {
+            const v = violation as {
+              dependency: { sourceLabel: string; targetLabel: string };
+            };
+            return `${v.dependency.sourceLabel} -> ${v.dependency.targetLabel}`;
+          })
+          .join('\n');
+
+        if (violations.length > 0) {
+          throw new Error(
+            `Architecture violation, ${restriction.folder} should not depend on ${restriction.shouldNotDependOn}:\n${errorMessage}`,
+          );
+        }
+      });
+    }
+  });
+});

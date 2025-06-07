@@ -1,5 +1,3 @@
-import '@fontsource/roboto';
-import 'reflect-metadata';
-import { Bootstrap } from 'Presentation/Bootstrap';
+import { Bootstrap } from 'Presentation/Core/Bootstrap';
 
-Bootstrap.init();
+void Bootstrap.init();
