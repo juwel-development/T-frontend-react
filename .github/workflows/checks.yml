@@ -31,8 +31,8 @@ jobs:
           path: node_modules
           key: node_modules-${{hashFiles('package-lock.json')}}
           restore-keys: node_modules-
-      - name: Run tests
-        run: npm run test
+      - name: Run unit tests
+        run: npm run test:unit
 
   lint:
     needs: install

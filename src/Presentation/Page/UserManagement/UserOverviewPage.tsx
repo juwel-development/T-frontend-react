@@ -22,15 +22,6 @@ const UserOverviewPage: FunctionComponent = () => {
     <PageLayout
       heading={translate('user.overview.title')}
       navbar={<PageNavbar />}
-      content={
-        <ul>
-          {users.map((user) => (
-            <li key={user.Id}>
-              {user.FullName} {user.Email}
-            </li>
-          ))}
-        </ul>
-      }
     />
   );
 };
