@@ -11,7 +11,7 @@ const rootRoute = createRootRoute();
 const homeRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: PagePath.home,
-  component: lazy(() => import('Presentation/Page/HomePage')),
+  component: lazy(() => import('Presentation/Page/Core/HomePage')),
 });
 
 const userOverviewRoute = createRoute({

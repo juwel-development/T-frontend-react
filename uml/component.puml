@@ -1,0 +1,81 @@
+@startuml
+allowmixing
+skinparam ArrowFontSize 10
+skinparam packagePadding 20
+skinparam classPadding 20
+skinparam shadowing false
+skinparam linetype ortho
+
+' Arrange horizontally: Presentation on left, others on right
+left to right direction
+
+actor User
+
+rectangle "Client" <<frame>> {
+    ' Left column: Presentation Layer (top to bottom)
+    rectangle "Presentation Layer" #F0FFF0 {
+        class Bootstrap <<EntryPoint>>
+        package Routing
+        package Page
+        package Organism
+
+        rectangle Core #E0FFFF {
+            package Atom
+            package Molecule
+        }
+    }
+
+    rectangle "Application Layer" #FFFACD {
+        class Dispatcher
+        class ViewModel
+        class Query
+    }
+
+    rectangle "Domain Layer" #F5F5DC {
+        package Event
+        package EventHandler
+        package Model
+        interface IRepository
+        class GlobalEvent$
+    }
+
+    rectangle "Infrastructure Layer" #F8F8FF {
+        package Repository
+        package Entity
+    }
+
+}
+
+' Invisible edges to align the right side vertically
+Routing -[#white]-> Dispatcher
+Dispatcher -[#white]-> EventHandler
+EventHandler -[#white]-> Repository
+
+' Connections (simplified for clarity)
+User --> Bootstrap : opens via browser
+Bootstrap --> Routing : initializes\nrouting
+Routing --> Page : loads and\ndisplays pages
+Page --> Organism : contains components
+Page --> Core : uses core components
+Organism --> Core : uses core components
+Molecule --> Atom : composed of atoms
+
+Organism --> Dispatcher : dispatch events
+Page --> Dispatcher : dispatch events
+Page --> Query : subscribe\n to ViewModel
+Organism --> Query : subscribe\n to ViewModel
+
+Dispatcher --> Event : dispatch events
+Dispatcher --> GlobalEvent$ : dispatch events
+Query --> GlobalEvent$ : convert events to ViewModel
+Model <-- EventHandler : uses domain model
+EventHandler --> GlobalEvent$ : handles events
+EventHandler --> IRepository : calls repository
+EventHandler --> Event : processes events
+IRepository --> Model : returns domain model
+
+Repository ..|> IRepository : implements
+Repository --> Model : returns domain model
+Repository --> Entity : loads entities
+
+@enduml

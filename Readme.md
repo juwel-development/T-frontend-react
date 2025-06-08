@@ -1,92 +1,88 @@
-# react-bootstrap
+# T-frontend-react
 
-This is a starter template for react projects to bootstrap a frontend application quickly.
+This is a template for react frontend projects for enterprise applications. It offers:
 
-## Motivation
+- storybook setup as interface between UX designers and developers by adding UX guidelines to the documentation
+- a component structure that is based on atomic design principles
+- a layered architecture that excludee client side business logic from the ui code
+- a separation of commands and queries to allow for a better separation of concerns
+- state management with RxJS to allow for a reactive programming style
+- fitness functions to ensure that the application is built according to the architecture
 
-I worked in several frontend projects and I had the feeling that over the last years the complexity and number of dependencies increased.
-The goal of this approach is to go back to the basics and check what is really needed to be productive when building a frontend web
-application. I am now using this architecture and techstack in other frontend projects and will update this project whenever there is a new
-learning.
+## Technology Stack
 
-### What is really needed for a frontend?
-
-I was thinking about what libraries were really boosting my productivity in the frontend. In my opinion there must be some library to build
-reusable components. In this example I was using `React`, but Vue, Angular or even Webcomponents work. For styling components I am
-picking `TailwindCss` and `class-variance-authority`, to create themeable components quickly. There also must be a way to implement
-dependency injection, this resulted in the use of `InversifyJS`. And to react on resource changes, I am using `RxJS`. RxJS in combination
-with React is very strong as it gives you the possibility to keep state local and to reduce the amount of components to render, when there
-are updates.
-
-### Why not Redux?
-
-Redux is great to implement the Flux architecture. But every React/Redux project I have seen before, was not
-implementing `Seperation of concerns`, so that the business logic was mixed with the UI. This resulted in a strong dependency to the React
-and Redux ecosystem. This project minimizes the logic inside the components - so it makes it easier to change it later, without changing
-other layers of the application.
-
-## Getting Started
-
-### Prerequisites
-
-- [Node.js](https://nodejs.org/en/) - Node.js® is a JavaScript runtime built on Chrome's V8 JavaScript engine.
-- [Yarn](https://yarnpkg.com/en/) - Yarn is a package manager that doubles down as project manager.
-
-### Installing
-
-Install dependencies
-
-```
-yarn install
-```
-
-## Running the project
-
-```
-yarn start
-```
-
-## Running the tests
-
-Coming soon
+- React
+- TypeScript
+- RxJS
+- tsyringe
+- tailwindcss
+- class-variance-authority
+- i18n
 
 ## Architecture
 
-Most commonly react projects use the Flux architecture with Redux as the state management library. This project follows a different approach
-and tries to bring the Clean Architecture to the frontend. Its goal is to separate the business logic from the UI and the infrastructure. In
-the end it should not matter, if you use React, Angular or Vue as your UI framework. It also provides maximum flexibility for backend api to
-use. You can use REST, GraphQL or even WebSockets, without changing the business logic and the presentation layer.
+![Architecture](https://www.plantuml.com/plantuml/png/bPHHQ-D64CVVzrCCII5tK1zfuQ0SmLpgH6tWZhfNsfUc3sjfR0stsX6p8xjEs-_UNTcArxAFjBOHtfdVplmrsh_U1xMYNUECTOut3Vr9VcN2P_Aj5Tl0hGXl2lRw2pqXV7ETfLfRVhOhdDkgYdlWspnNEXl2sKoeRSMR55vQ5p3BEFAesnQ1HMisvYerjtw5KBFG4tkD4hVlO2uOC2wKs4FyELpgry1QeuIq5bhLQb8Kb7Shg4YmJ1kCiQMomAy1nPWKZ1qSmiNC4NgzW9kRPHI3qodyPI1-hk13gbIowne_Qlx1Rb7WbNAREYrObPlN_QwiyEcE2xWihekYk4ujzfz-OF0zimOLsqOPzrvbEsVoEfqEs31p-CITnXcUnEVnSXByILRMKsZCaCdapLWGBk-Jd2AJas-_LMxE9Zwomx9pXuR_cDrrF8BRjdLKZYPG5BUpkvC9t55ehPOroYZn6-7c8rVeHl6VEvJj5_hUSMCfQ_csU7itYot7DtA_Hg_depzQNpcKa-In5FAAihGbmiCdR3cGicn7GdzmlB2kB_hL5_G--ANOeDALsWaUT7yNlyKPtUDUkNYlfCzpYRyhUF1h2hI8ZR1QOG1bi8vM7hJ6lKq2LGXh5AKoUStiZnbCVh_SrAJunsIQFw73tvmu7bo-oAbSV1GtO-zt3WtmAb3JEbeILh1aIVCJqkrhaqmBaxZtu9Dtm2t6FMkoi13UHC8Sif4Th199ygHa7JrXUFIoTz2GJcXoJ-GSsof0bFpeAmgjizi0RKm5qmE972mLwPAzMl8X_cbQzkWruvAz8jC5J7d171fgl0WEFkl1vCO8zkc05V0IR0m5azVBdrA4g_q2S9tB-wzKRx48X6uHIg45FdfGpXoPTtwPFZesmt4vxJ_6Sl-SeVksvy2IVJhHU-vOId-5cydawCmEpw7QlJwQ7is1SstgFXK6EMCyVp54EjahW3o7HdmsbLQun10EbVD22Upl8OA2seaVgJOP_ERDtsCPoMVOz6N_HzKnktlNF1i7qv8m6FCUVTKrxby0)
 
-### Main concepts
+### Atomic Design
 
-- **CQRS** - Command Query Responsibility Segregation
-    - This repository separates read and write operations. UI components can subscribe to a ressource stream and decide when to update.
-    - User interactions get propagated as commands to the business logic. If a result of a command is an updated resource, the UI gets
-      informed by their subscription to the ressource stream. Command are "fire and forget".
-- **Observables everywhere**
-    - The whole application is built around observables. Each layer of the application uses observables to communicate with each other, that
-      makes it easy to implement the subscribe pattern in the UI.
-- **Dependency Injection**
-    - The business logic is completely decoupled from the infrastructure. The infrastructure is injected into the business logic. This makes
-      it easy to test the business logic with mock infrastructure. For dependency injection this project
-      uses [InversifyJS](http://inversify.io/).
-- **Atomic Design**
-    - The UI is built with the [Atomic Design](http://bradfrost.com/blog/post/atomic-web-design/) methodology. I see this as a methodology
-      to communicate with a design team and to exchange components and UI Framework quickly. For styling components we
-      use [TailwindCSS](https://tailwindcss.com/).
+Within the `Presentation` directory you find components like `atoms`, `molecules`, `organisms`, and `pages` that follow the atomic design
+principles.
 
-### Layers
+Components are seperated by their purpose in the business domain. Inside `Presentation/Core` a component is not allowed to have any business
+logic or connection to it - this is where you find `atoms` and `molecules`.
 
-- **Presentation Layer**
-    - The presentation layer is the UI. It is built with React, but this can be changed easily. The UI subscribes view models and updates
-      itself when the view model changes. The UI also sends commands.
-- **Application Layer**
-    - The application layer prepares the data for the UI. It subscribes to the business logic and transforms the data into view models. It
-      also sends commands to the business logic.
-- **Domain Layer**
-    - The domain layer contains the business logic. It is completely decoupled from the infrastructure. It subscribes to the infrastructure
-      and sends commands to the infrastructure.
-- **Infrastructure Layer**
-    - The infrastructure layer communicates with the backend or other services. It is decoupled from the business logic. It
-      subscribes to the backend and sends commands to the backend. Repositories are also a caching layer, so that the UI is only updated
-      when some resources changed.
+`Organisms` and `pages` can subscribe to `ViewModels` or dispatch `Events` via the `Application` layer. This is why you find them in the
+`Core` directory and they have their business domain as subdirectory.
+
+### Layered Architecture
+
+The architecture has the following layers:
+
+- **Presentation**: Contains the UI components, organized by atomic design principles.
+- **Application**: Connects UI with the domain logic and prepares data for the UI.
+- **Domain**: Contains the domain models and business rules and events.
+- **Infrastructure**: Contains the technical details, such as API calls and data storage.
+
+### Separation of Commands and Queries
+
+#### Commands
+
+This project follows and extends the principles of a Flux architecture, with the difference that data is not stored in a central store.
+All data is seen as a continues stream of information on which the UI can subscribe to. This results in UI updates can be controlled by the
+developer (for example delayed, while a user is editing).
+
+- The emitted events are handled by the `Domain` layer. An event handler can subscribe to any event by implementing the following pattern:
+
+```typescript
+import {
+  EventHandler,
+  type IEventHandler,
+} from '@juwel-development/react-observable-tools';
+
+@EventHandler("YOUR_EVENT_NAME")
+class SomeEventHandler implements IEventHandler<YourEvent> {
+  public handle(event: YourEvent): void {
+    // Your buisiness logic here
+  }
+}
+
+```
+
+#### Queries
+
+In CQRS it's a common pattern to allow the application layer to retrieve data directly from the infrastructure layer. This project follows
+this pattern. Also, do not hesitate to use the Global-Event-Stream (`GlobalEvent$`) to build your view models based on application events.
+
+### State Management
+
+This template is not using common state management pattern that are used in React applications, like Redux or zustand. Instead, this
+template
+uses the approach of date steams.
+
+Real world example: Assume you, as a human being, are an 'observer' that is observing what is happening in the world. Based on what you
+observe, you make decisions and take actions. This is the same approach that this template is using. This approach makes it independent of
+the backend technology used. It can deal with a REST API, GraphQL, or any streaming API (e.g. a CQRS backend, or Google Firebase), by
+implementing your Repositories accordingly.
+
+
+
