@@ -37,6 +37,38 @@ describe('Architecture ', () => {
       { folder: 'Infrastructure', shouldNotDependOn: 'Presentation' },
       { folder: 'Presentation', shouldNotDependOn: 'Domain' },
       { folder: 'Presentation', shouldNotDependOn: 'Infrastructure' },
+      {
+        folder: 'Presentation/Core',
+        shouldNotDependOn: 'Presentation/Organism',
+      },
+      {
+        folder: 'Presentation/Core',
+        shouldNotDependOn: 'Presentation/Page',
+      },
+      {
+        folder: 'Presentation/Core/Atom',
+        shouldNotDependOn: 'Presentation/Core/Molecule',
+      },
+      {
+        folder: 'Presentation/Core/Atom',
+        shouldNotDependOn: 'Presentation/Organism',
+      },
+      {
+        folder: 'Presentation/Core/Atom',
+        shouldNotDependOn: 'Presentation/Page',
+      },
+      {
+        folder: 'Presentation/Core/Molecule',
+        shouldNotDependOn: 'Presentation/Organism',
+      },
+      {
+        folder: 'Presentation/Core/Molecule',
+        shouldNotDependOn: 'Presentation/Page',
+      },
+      {
+        folder: 'Presentation/Organism',
+        shouldNotDependOn: 'Presentation/Page',
+      },
     ];
 
     for (const restriction of restrictions) {
