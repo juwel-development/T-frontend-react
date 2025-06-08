@@ -12,7 +12,7 @@
 		"lint:fix": "biome check src test --fix",
 		"start": "node_modules/.bin/webpack serve --env dev",
 		"test:architecture": "node --import tsx --test test/architecture/**/*.ts",
-		"test": "ts-node-esm --project tsconfig.json test/run-tests.mts",
+		"test": "ts-node --project tsconfig.json test/run-tests.ts",
 		"typecheck": "tsc --noEmit",
 		"storybook": "storybook dev -p 6006",
 		"build-storybook": "storybook build"
