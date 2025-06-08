@@ -1,25 +1,21 @@
 {
-  "compilerOptions": {
-    "experimentalDecorators": true,
-    "target": "es6",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "es6",
-      "webworker"
-    ],
-    "allowJs": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "jsx": "react-jsx",
-    "baseUrl": "./src",
-    "sourceMap": true
-  },
-  "globals": {
-    "ENV": "string"
-  }
+	"compilerOptions": {
+		"experimentalDecorators": true,
+		"target": "es6",
+		"lib": ["dom", "dom.iterable", "es6", "webworker"],
+		"skipLibCheck": true,
+		"allowJs": true,
+		"esModuleInterop": true,
+		"allowSyntheticDefaultImports": true,
+		"strict": true,
+		"forceConsistentCasingInFileNames": true,
+		"module": "esnext",
+		"moduleResolution": "node",
+		"jsx": "react-jsx",
+		"baseUrl": "./src",
+		"sourceMap": true
+	},
+	"globals": {
+		"ENV": "string"
+	}
 }

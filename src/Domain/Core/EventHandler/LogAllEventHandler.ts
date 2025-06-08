@@ -7,6 +7,9 @@ import {
 @EventHandler(/.*/)
 class LogAllEventHandler implements IEventHandler<unknown> {
   public handle(event: unknown): void {
-    Logger.getLogger(LogAllEventHandler.name).debug(event);
+    Logger.getLogger(LogAllEventHandler.name).debug(
+      new Date().getTime(),
+      event,
+    );
   }
 }

@@ -7,6 +7,7 @@ import { ApplicationQuery } from 'Application/Core/ApplicationQuery';
 import { MoonIcon } from 'Presentation/Core/Atom/Icon/MoonIcon';
 import { SunIcon } from 'Presentation/Core/Atom/Icon/SunIcon';
 import { Navbar } from 'Presentation/Core/Atom/Layout/Navbar';
+import { useTranslation } from 'Presentation/Translation/useTranslation';
 import type { FunctionComponent } from 'react';
 import { container } from 'tsyringe';
 
@@ -21,11 +22,17 @@ export const PageNavbar: FunctionComponent = () => {
     applicationEventDispatcher.toggleTheme();
   });
 
+  const { translate } = useTranslation();
+
   return (
     <Navbar.Root
       right={
         <Navbar.Button onClick$={toggleTheme$}>
-          {theme === 'dark' ? <SunIcon /> : <MoonIcon />}
+          {theme === 'dark' ? (
+            <SunIcon alt={translate('core.theme.light')} />
+          ) : (
+            <MoonIcon alt={translate('core.theme.dark')} />
+          )}
         </Navbar.Button>
       }
     />

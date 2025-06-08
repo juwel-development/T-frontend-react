@@ -6,6 +6,7 @@ import {
 } from '@juwel-development/react-observable-tools';
 import { ApplicationReadyEvent } from 'Domain/Core/Event/ApplicationReadyEvent';
 import { ToggleThemeEvent } from 'Domain/Core/Event/ToggleThemeEvent';
+import { TranslationReadyEvent } from 'Domain/Core/Event/TranslationReadyEvent';
 import type { Subject } from 'rxjs';
 import { inject, singleton } from 'tsyringe';
 
@@ -22,5 +23,9 @@ export class ApplicationEventDispatcher {
 
   public toggleTheme() {
     this.globalEvent$.next(new ToggleThemeEvent());
+  }
+
+  public translationReady() {
+    this.globalEvent$.next(new TranslationReadyEvent());
   }
 }
