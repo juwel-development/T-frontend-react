@@ -10,8 +10,6 @@ const LazyImportPlugin: BackendModule = {
   type: 'backend',
   init: (services, backendOptions, i18nextOptions) => {},
   read: (language, namespace, callback) => {
-    console.log({ language, namespace });
-
     import(`./${language}.ts`)
       .then((m) => m[language])
       .then((obj) => {

@@ -14,7 +14,15 @@ const homeRoute = createRoute({
   component: lazy(() => import('Presentation/Page/HomePage')),
 });
 
-rootRoute.addChildren([homeRoute]);
+const userOverviewRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: PagePath.userOverview,
+  component: lazy(
+    () => import('Presentation/Page/UserManagement/UserOverviewPage'),
+  ),
+});
+
+rootRoute.addChildren([homeRoute, userOverviewRoute]);
 
 export const router = createRouter({
   routeTree: rootRoute,

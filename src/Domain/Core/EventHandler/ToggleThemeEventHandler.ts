@@ -7,7 +7,7 @@ import {
   type ToggleThemeEvent,
   ToggleThemeEventType,
 } from 'Domain/Core/Event/ToggleThemeEvent';
-import type { IThemeRepository } from 'Domain/Core/IThemeRepository';
+import type { IThemeRepository } from 'Domain/Core/Repository/IThemeRepository';
 import { take } from 'rxjs';
 import { inject, injectable } from 'tsyringe';
 

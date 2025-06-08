@@ -4,7 +4,7 @@ import {
 } from '@juwel-development/react-observable-tools';
 import { CoreToken } from 'Domain/Core/CoreToken';
 import { TranslationReadyEventType } from 'Domain/Core/Event/TranslationReadyEvent';
-import type { IThemeRepository } from 'Domain/Core/IThemeRepository';
+import type { IThemeRepository } from 'Domain/Core/Repository/IThemeRepository';
 import { type Observable, type Subject, filter, map, startWith } from 'rxjs';
 import { inject, singleton } from 'tsyringe';
 

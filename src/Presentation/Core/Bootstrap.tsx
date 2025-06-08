@@ -10,6 +10,7 @@ import { Translation } from 'Presentation/Translation/Translation';
 import { type FunctionComponent, StrictMode, Suspense, useEffect } from 'react';
 import { createRoot } from 'react-dom/client';
 import { container } from 'tsyringe';
+
 const AppComponent: FunctionComponent = () => {
   const applicationQuery = container.resolve(ApplicationQuery);
   const isTranslationReady = useSubscription(

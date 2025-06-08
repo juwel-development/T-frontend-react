@@ -1,4 +1,4 @@
-import type { IThemeRepository } from 'Domain/Core/IThemeRepository';
+import type { IThemeRepository } from 'Domain/Core/Repository/IThemeRepository';
 import { ReplaySubject } from 'rxjs';
 
 export class ThemeRepository implements IThemeRepository {
