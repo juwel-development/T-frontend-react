@@ -1,19 +1,20 @@
-/* eslint-disable @typescript-eslint/no-var-requires, no-undef */
-// const CopyPlugin = require('copy-webpack-plugin');
-require('dotenv').config();
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { CleanWebpackPlugin } from 'clean-webpack-plugin';
+import dotenv from 'dotenv';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import TerserPlugin from 'terser-webpack-plugin';
+import webpack from 'webpack';
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const BundleAnalyzerPlugin =
-  require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-const TerserPlugin = require('terser-webpack-plugin');
-const webpack = require('webpack');
-
-const path = require('node:path');
+dotenv.config();
 
 const isProduction = process.argv.indexOf('prod') > -1;
 
-module.exports = {
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+export default {
   mode: isProduction ? 'production' : 'development',
   entry: {
     loader: path.resolve(`${__dirname}/src/index.ts`),
@@ -38,7 +39,7 @@ module.exports = {
       },
       {
         test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
-        loader: require.resolve('url-loader'),
+        loader: 'url-loader',
         options: {
           limit: 10000,
           name: 'static/media/[name].[hash:8].[ext]',

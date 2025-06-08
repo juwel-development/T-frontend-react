@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Navbar } from './Navbar';
 
 const meta: Meta<typeof Navbar.Root> = {
-  title: 'Atom/Layout/Navbar',
+  title: 'Core/Atom/Layout/Navbar',
   component: Navbar.Root,
   parameters: {
     layout: 'fullscreen',
